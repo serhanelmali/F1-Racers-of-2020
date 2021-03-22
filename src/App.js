@@ -41,11 +41,11 @@ const App = () => {
             clicked={clicked}
             onClickHandler={() => setClicked(true)}
           />{" "}
-          <RaceDetails />
         </>
       ) : (
         <RaceDetails
           clicked={clicked}
+          races={races}
           onClickHandler={() => setClicked(false)}
         />
       )}

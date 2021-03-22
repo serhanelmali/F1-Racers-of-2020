@@ -97,7 +97,7 @@ const RaceDetails = ({ onClickHandler, clicked, races }) => {
   return (
     <Main>
       {races.map((race, index) => (
-        <Card />
+        <Card key={index}> {race.raceName} </Card>
       ))}
       <button onClick={onClickHandler}></button>
     </Main>
