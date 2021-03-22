@@ -38,7 +38,7 @@ const App = () => {
             races={races}
             clicked={clicked}
             onClickHandler={() =>
-              setClicked({ status: true, currentRace: races })
+              setClicked({ status: true, currentRace: { key } })
             }
           />{" "}
         </>
@@ -46,7 +46,8 @@ const App = () => {
         <RaceDetails
           clicked={clicked}
           races={races}
-          onClickHandler={() => setClicked({ status: false, currentRace: "" })}
+          key={key}
+          onClickHandler={() => setClicked({ status: false, currentRace: {} })}
         />
       )}
     </div>
