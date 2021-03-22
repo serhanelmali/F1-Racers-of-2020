@@ -5,8 +5,7 @@ import "./App.css";
 const App = () => {
   const [races, setRaces] = useState([]);
   const [winner, setWinner] = useState("");
-  const [choosenRace, setChoosenRace] = useState([]);
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState({ status: false, race: " " });
 
   useEffect(() => {
     fetch(`https://ergast.com/api/f1/2020/results/1.json`)
@@ -33,20 +32,19 @@ const App = () => {
   return (
     <div className="App">
       <h1>F1 Racers of 2020</h1>
-      {!clicked ? (
+      {!clicked.status ? (
         <>
           <AllRacers
             races={races}
-            winner={winner}
             clicked={clicked}
-            onClickHandler={() => setClicked(true)}
+            onClickHandler={() => setClicked({ status: true, race: races })}
           />{" "}
         </>
       ) : (
         <RaceDetails
           clicked={clicked}
           races={races}
-          onClickHandler={() => setClicked(false)}
+          onClickHandler={() => setClicked({ status: false, race: "" })}
         />
       )}
     </div>

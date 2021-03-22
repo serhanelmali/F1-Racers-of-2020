@@ -56,12 +56,12 @@ const detailsCard = styled.div`
   margin: 10px;
 `;
 
-const AllRacers = ({ races, winner, onClickHandler, clicked }) => {
+const AllRacers = ({ races, onClickHandler, clicked }) => {
   console.log(clicked);
   return (
     <Main>
       {races.map((race, index) => (
-        <Card onClick={onClickHandler} key={index}>
+        <Card onClick={onClickHandler} key={race.id}>
           <CardBody>
             <CardTitle>{race.raceName}</CardTitle>
             <CardSubtitle>{race.Circuit.circuitName}</CardSubtitle>
@@ -93,11 +93,12 @@ const AllRacers = ({ races, winner, onClickHandler, clicked }) => {
   );
 };
 
-const RaceDetails = ({ onClickHandler, clicked, races }) => {
+const RaceDetails = ({ onClickHandler, races }) => {
+  let selected = races;
   return (
     <Main>
-      {races.map((race, index) => (
-        <Card key={index}> {race.raceName} </Card>
+      {races.map((race) => (
+        <Card key={race.id}> {race.raceName} </Card>
       ))}
       <button onClick={onClickHandler}></button>
     </Main>
